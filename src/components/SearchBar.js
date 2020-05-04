@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Text, View, TextInput } from 'react-native';
 
 const SearchBar = (props) => {
+
+const APP_ID = "41f98a84";
+const APP_KEY = "e62cbc437ac76a4c030391dcf8bc7b9f";
+
+useEffect ( () => {
+getRecipes();
+}, []);
+
+const getRecipes = async () => {
+	const response = await fetch(
+	`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`
+);
+    const data = await response.json();
+	console.log(data.hits);
+};
 
 return <View style={styles.backgroundStyle}>
 <TextInput
