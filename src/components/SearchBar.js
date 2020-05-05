@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { Text, View, TextInput } from 'react-native';
+import { Text, View, TextInput, FlatList, ScrollView } from 'react-native';
+import Recipe from './Recipe';
 
 const SearchBar = (props) => {
 
 const APP_ID = "41f98a84";
 const APP_KEY = "e62cbc437ac76a4c030391dcf8bc7b9f";
+
+const [recipes, setRecipes] = useState([]);
 
 useEffect ( () => {
 getRecipes();
@@ -15,10 +18,11 @@ const getRecipes = async () => {
 	`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`
 );
     const data = await response.json();
-	console.log(data.hits);
+	setRecipes(data.hits);
 };
 
-return <View style={styles.backgroundStyle}>
+return <View> 
+<View style={styles.backgroundStyle}>
 <TextInput
         style={styles.inputStyle}
         autoCapitalize="none"
@@ -26,8 +30,23 @@ return <View style={styles.backgroundStyle}>
         placeholder="Search"
 		value={props.value}
         onChangeText={props.onChangeText}
-
       />
+
+	  </View>
+
+     <ScrollView>
+	 {recipes.map(recipe => (
+	  	  <Recipe 
+		  key={recipe.recipe.label}
+		  title={recipe.recipe.label}
+		  calories={recipe.recipe.calories}
+		  image={recipe.recipe.image}
+		  />
+	  ))}
+	  </ScrollView>
+
+
+
 </View>
 
 };
@@ -50,6 +69,9 @@ const styles = {
     fontSize: 35,
     alignSelf: 'center',
     marginHorizontal: 15
+  },
+  listStyle: {
+  
   }
 };
 
