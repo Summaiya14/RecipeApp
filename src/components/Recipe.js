@@ -22,7 +22,9 @@ const styles = {
 	imageStyle: {
 		height: 250,
 		width: 250,
-		alignSelf: 'center'
+		alignSelf: 'center',
+		marginTop: 15,
+		marginBottom: 15
 	}
 };
 

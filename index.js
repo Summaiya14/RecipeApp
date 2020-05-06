@@ -7,11 +7,11 @@ const App = () => {
 
 const [text, setText] = useState('');
 
-	return <View>
+	return <View style={{flex: 1}}>
 	<Header headerText="Recipe App"/>
 	<SearchBar 
     value={text}
-	onChangeText={(newValue) => setText(newValue)}
+	onChangeText={(newValue) => setText(newValue)} 
 	/>
 
 	</View>

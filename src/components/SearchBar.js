@@ -21,7 +21,7 @@ const getRecipes = async () => {
 	setRecipes(data.hits);
 };
 
-return <View> 
+return <View style={{flex: 1, backgroundColor: '#ffb6c1'}}> 
 <View style={styles.backgroundStyle}>
 <TextInput
         style={styles.inputStyle}
