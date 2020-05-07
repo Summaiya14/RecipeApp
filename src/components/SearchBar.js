@@ -19,6 +19,7 @@ const getRecipes = async () => {
 );
     const data = await response.json();
 	setRecipes(data.hits);
+	console.log(data.hits);
 };
 
 return <View style={{flex: 1, backgroundColor: '#ffb6c1'}}> 
@@ -41,6 +42,7 @@ return <View style={{flex: 1, backgroundColor: '#ffb6c1'}}>
 		  title={recipe.recipe.label}
 		  calories={recipe.recipe.calories}
 		  image={recipe.recipe.image}
+		  ingredients={recipe.recipe.ingredients}
 		  />
 	  ))}
 	  </ScrollView>
